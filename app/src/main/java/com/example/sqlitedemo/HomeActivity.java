@@ -27,7 +27,7 @@ public class HomeActivity extends AppCompatActivity {
 
     String namey,age;
 
-    private static String JSON_URL = "https://run.mocky.io/v3/f4f04a16-cdb9-4b70-8552-497811021dd2";
+    private static String JSON_URL = "https://run.mocky.io/v3/1edcadc6-1b7b-4af0-9f6e-b9cba95e848e";
 
     ArrayList<HashMap<String,String>> friendsList;
 
@@ -103,9 +103,10 @@ public class HomeActivity extends AppCompatActivity {
 
            try {
                JSONObject jsonObject = new JSONObject(s);
-               JSONArray jsonArray = jsonObject.getJSONArray("Friends");
+               JSONArray jsonArray = jsonObject.getJSONArray("");
 
                for (int i=0; i<jsonArray.length(); i++){
+
 
                    JSONObject jsonObject1 = jsonArray.getJSONObject(i);
 
