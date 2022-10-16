@@ -2,6 +2,7 @@ package com.example.sqlitedemo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.util.Log;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.widget.ListAdapter;
@@ -27,7 +28,12 @@ public class HomeActivity extends AppCompatActivity {
 
     String namey,age;
 
-    private static String JSON_URL = "https://run.mocky.io/v3/8c5dae9f-b40f-4887-aa2c-0ed385d68657";
+//    private static String JSON_URL = "https://192.168.8.100:49146/api/petrolshed";
+//private static String JSON_URL = "https://run.mocky.io/v3/76293af7-867f-407a-ae0a-b3da44337801";
+
+//    private static String JSON_URL = "https://run.mocky.io/v3/e2819273-f812-416e-a589-399ba17ecaf4";
+     private static String JSON_URL = "https://run.mocky.io/v3/3f5709d9-7d7d-4ebe-ac1e-cec42a8882cb";
+
 
     ArrayList<HashMap<String,String>> friendsList;
 
@@ -60,6 +66,7 @@ public class HomeActivity extends AppCompatActivity {
        protected String doInBackground(String... strings) {
            String current = "";
 
+
            try {
                URL url;
                HttpURLConnection urlConnection = null;
@@ -78,7 +85,7 @@ public class HomeActivity extends AppCompatActivity {
                        data = isr.read();
 
                    }
-
+                   Log.d("success", "test method -3" + current);
                    return current;
 
 
@@ -101,17 +108,29 @@ public class HomeActivity extends AppCompatActivity {
        @Override
        protected void onPostExecute(String s) {
 
-           try {
-               JSONObject jsonObject = new JSONObject(s);
-               JSONArray jsonArray = jsonObject.getJSONArray("Friends");
+           String data = "[{\"name\": \"sandeep\",\"age\":30},{\"name\": \"vivan\",\"age\":5}]  ";
+//           String data3 = s.substring(1);
+//           String data4 = data3.substring(0, data3.length() - 1);
+//           String data5 = "[" + data4 + "]";
+           Log.d("success", "test method66" + s);
 
+           try {
+//               Log.d("success", "test method6 data4" + data4);
+
+               JSONArray jsonArray = new JSONArray(s);
+
+               Log.d("success", "test method7");
+//               JSONArray jsonArray = jsonObject.getJSONArray("Friends");
+
+               Log.d("success", "test method" + jsonArray);
+               Log.d("success", "test method2" + s);
                for (int i=0; i<jsonArray.length(); i++){
 
 
                    JSONObject jsonObject1 = jsonArray.getJSONObject(i);
 
-                   namey = jsonObject1.getString("name");
-                   age = jsonObject1.getString("age");
+                   namey = jsonObject1.getString("PetrolShedName");
+                   age = jsonObject1.getString("AvailableQuantity");
 
 
 
