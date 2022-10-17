@@ -2,9 +2,12 @@ package com.example.sqlitedemo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.util.Log;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -28,11 +31,11 @@ public class HomeActivity extends AppCompatActivity {
 
     String namey,age;
 
-//    private static String JSON_URL = "https://192.168.8.100:49146/api/petrolshed";
+    private static String JSON_URL = "http://192.168.111.14:45456/api/petrolshed";
 //private static String JSON_URL = "https://run.mocky.io/v3/76293af7-867f-407a-ae0a-b3da44337801";
 
 //    private static String JSON_URL = "https://run.mocky.io/v3/e2819273-f812-416e-a589-399ba17ecaf4";
-     private static String JSON_URL = "https://run.mocky.io/v3/3f5709d9-7d7d-4ebe-ac1e-cec42a8882cb";
+//     private static String JSON_URL = "https://run.mocky.io/v3/3f5709d9-7d7d-4ebe-ac1e-cec42a8882cb";
 
 
     ArrayList<HashMap<String,String>> friendsList;
@@ -163,6 +166,16 @@ public class HomeActivity extends AppCompatActivity {
                    new int[]{R.id.textView, R.id.textView2});
 
            lv.setAdapter(adapter);
+           lv.setClickable(true);
+           lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+               @Override
+               public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                   Intent a = new Intent(HomeActivity.this,QueueDetailsActivity.class);
+                   a.putExtra("name",friendsList.get(i).get("name"));
+                   a.putExtra("age",friendsList.get(i).get("age"));
+                   startActivity(a);
+               }
+           });
 
        }
    }

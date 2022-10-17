@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".QueueDetailsActivity">
+
+    <TextView
+        android:id="@+id/petrolShedName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Petrol shed name"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.228" />
+
+    <TextView
+        android:id="@+id/petrolQuantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Petrol quantity"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/petrolShedName"
+        app:layout_constraintVertical_bias="0.077" />
+
+    <TextView
+        android:id="@+id/numberOfPeople"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Number of people waiting in que"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/petrolQuantity"
+        app:layout_constraintVertical_bias="0.144" />
+
+    <TextView
+        android:id="@+id/car"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Car"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/numberOfPeople"
+        app:layout_constraintVertical_bias="0.161" />
+
+    <TextView
+        android:id="@+id/motorBicycle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Motor Bicycle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/car"
+        app:layout_constraintVertical_bias="0.241" />
+
+    <Button
+        android:id="@+id/jButton"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:backgroundTint="#226769E3"
+        android:text="already have an account"
+        android:textColor="#CCB4B4"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/motorBicycle"
+        tools:layout_editor_absoluteX="16dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
