@@ -4,25 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#8EC5B3"
     tools:context=".QueueDetailsActivity">
 
     <TextView
         android:id="@+id/petrolShedName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Petrol shed name"
+        android:text="Petrol Shed Name"
+        android:textColor="#E1372C31"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:textSize="25dp"
         app:layout_constraintVertical_bias="0.228" />
 
     <TextView
         android:id="@+id/petrolQuantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Petrol quantity"
+        android:text="Petrol Quantity"
+        android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -34,7 +38,8 @@
         android:id="@+id/numberOfPeople"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Number of people waiting in que"
+        android:textSize="25dp"
+        android:text="Number of people waiting in Queue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -47,6 +52,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Car"
+        android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -58,7 +64,8 @@
         android:id="@+id/motorBicycle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Motor Bicycle"
+        android:text="Motor Bike"
+        android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -68,14 +75,17 @@
 
     <Button
         android:id="@+id/jButton"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_width="277dp"
+        android:layout_height="95dp"
         android:backgroundTint="#226769E3"
-        android:text="already have an account"
+        android:text="Already have an account"
         android:textColor="#CCB4B4"
-        android:textSize="15dp"
+        android:textScaleX="1"
+        android:textSize="25dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/motorBicycle"
-        tools:layout_editor_absoluteX="16dp" />
+        app:layout_constraintVertical_bias="0.58" />
 </androidx.constraintlayout.widget.ConstraintLayout>
