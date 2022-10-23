@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="10dp"
-    android:background="#65C9CD"
+    android:background="#009688"
     android:orientation="vertical"
     tools:context=".LoginActivity">
 
@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Sign In"
-        android:textColor="#222B28"
+        android:textColor="#4CAF50"
         android:textSize="50dp"
         android:textStyle="bold"
         android:gravity="center_horizontal"
@@ -26,7 +26,8 @@
         android:id="@+id/username1"
         android:hint="Username"
         android:textSize="25dp"
-        android:textColorHint="#100F0F"
+        android:textColorHint="#009688"
+        android:backgroundTint="@color/white"
         android:background="@drawable/edittextbackground"
         android:layout_marginBottom="30dp"
         android:paddingLeft="20dp"/>
@@ -37,7 +38,8 @@
         android:id="@+id/password1"
         android:hint="Password"
         android:textSize="25dp"
-        android:textColorHint="#100F0F"
+        android:textColorHint="#009688"
+        android:backgroundTint="@color/white"
         android:background="@drawable/edittextbackground"
         android:layout_marginBottom="30dp"
         android:paddingLeft="20dp"/>
@@ -48,7 +50,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginBottom="30dp"
-        android:backgroundTint="#83ECC8"
+        android:backgroundTint="#073A36"
         android:text="Sign in"
         android:textColor="#FFF9F9"
         android:textSize="20dp" />
