@@ -29,9 +29,9 @@ public class HomeActivity extends AppCompatActivity {
 
     private ListView lv;
 
-    String namey,age;
+    String PetrolShedName,age;
 
-    private static String JSON_URL = "http://192.168.1.192:45457/api/petrolshed";
+    private static String JSON_URL = "http://192.168.8.101:45458/api/petrolshed";
 //private static String JSON_URL = "https://run.mocky.io/v3/76293af7-867f-407a-ae0a-b3da44337801";
 
 //    private static String JSON_URL = "https://run.mocky.io/v3/e2819273-f812-416e-a589-399ba17ecaf4";
@@ -132,7 +132,7 @@ public class HomeActivity extends AppCompatActivity {
 
                    JSONObject jsonObject1 = jsonArray.getJSONObject(i);
 
-                   namey = jsonObject1.getString("PetrolShedName");
+                   PetrolShedName = jsonObject1.getString("PetrolShedName");
                    age = jsonObject1.getString("AvailableQuantity");
 
 
@@ -140,7 +140,7 @@ public class HomeActivity extends AppCompatActivity {
                    //Hashmap
                    HashMap<String, String> friends = new HashMap<>();
 
-                   friends.put("name", namey);
+                   friends.put("PetrolShedName", PetrolShedName);
                    friends.put("age", age);
 
                    friendsList.add(friends);
@@ -162,7 +162,7 @@ public class HomeActivity extends AppCompatActivity {
                    HomeActivity.this,
                    friendsList,
                    R.layout.row_layout,
-                   new String[] {"name", "age"},
+                   new String[] {"PetrolShedName", "age"},
                    new int[]{R.id.textView, R.id.textView2});
 
            lv.setAdapter(adapter);
@@ -171,7 +171,7 @@ public class HomeActivity extends AppCompatActivity {
                @Override
                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                    Intent a = new Intent(HomeActivity.this,QueueDetailsActivity.class);
-                   a.putExtra("name",friendsList.get(i).get("name"));
+                   a.putExtra("name",friendsList.get(i).get("PetrolShedName"));
                    a.putExtra("age",friendsList.get(i).get("age"));
                    startActivity(a);
                }

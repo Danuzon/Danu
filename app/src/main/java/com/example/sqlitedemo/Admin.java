@@ -35,16 +35,18 @@ public class Admin extends AppCompatActivity {
     }
     private void btnSendPostRequestClicked() {
 
+        final PetrolShedAdmin petrolShedAdmin = new PetrolShedAdmin("52","colomboPetrol2","222");
+
         ApiInterface apiInterface = RetrofitClient.getRetrofitInstance().create(ApiInterface.class);
-        Call<PetrolShedAdmin> call  = apiInterface.getPetrolShedInformation("121","ABCD");
+        Call<PetrolShedAdmin> call  = apiInterface.createTask(petrolShedAdmin);
         call.enqueue((new Callback<PetrolShedAdmin>() {
             @Override
             public void onResponse(Call<PetrolShedAdmin> call, Response<PetrolShedAdmin> response) {
 
                 Log.e(TAG, "onResponse: "+response.code());
-                Log.e(TAG, "onResponse: "+response.body(). getPetrolShedId());
-                Log.e(TAG, "onResponse: "+response.body().getPetrolShedName());
-                Log.e(TAG, "onResponse: "+response.body().getAvailableQuantity());
+//                Log.e(TAG, "onResponse: "+response.body(). getPetrolShedId());
+//                Log.e(TAG, "onResponse: "+response.body().getPetrolShedName());
+//                Log.e(TAG, "onResponse: "+response.body().getAvailableQuantity());
               //  Log.e(TAG, "onResponse: "+response.body().getId());
 
 
@@ -57,16 +59,6 @@ public class Admin extends AppCompatActivity {
 
             }
         }));
-
-
-
-
-
-
-
-
-
-
     }
 
 
