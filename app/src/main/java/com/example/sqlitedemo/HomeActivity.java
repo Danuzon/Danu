@@ -31,7 +31,7 @@ public class HomeActivity extends AppCompatActivity {
 
     String PetrolShedName,age;
 
-    private static String JSON_URL = "http://192.168.1.192:45456/api/petrolshed";
+   String JSON_URL = ApiInterface.JSON_URL_froPetrolStation ;
 //private static String JSON_URL = "https://run.mocky.io/v3/76293af7-867f-407a-ae0a-b3da44337801";
 
 //    private static String JSON_URL = "https://run.mocky.io/v3/e2819273-f812-416e-a589-399ba17ecaf4";

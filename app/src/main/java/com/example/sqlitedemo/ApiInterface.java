@@ -11,6 +11,9 @@ import retrofit2.http.POST;
 
 public interface ApiInterface {
 
+    String JSON_URL_froPetrolStation = "http://192.168.8.101:45458/api/petrolshed";
+    String JSON_URL_BASE = "http://192.168.8.101:45458";
+
     @POST("/api/petrolshed")
 //    @Headers({ "Content-Type: application/json;charset=UTF-8"})
 //    Call<PetrolShedAdmin> getPetrolShedInformation(@Field("PetrolShedId") String PetrolShedId, @Field("PetrolShedName") String PetrolShedName);
