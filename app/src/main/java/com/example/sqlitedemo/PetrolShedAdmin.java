@@ -12,4 +12,13 @@ public class PetrolShedAdmin {
         PetrolShedName = petrolShedName;
         AvailableQuantity = availableQuantity;
     }
+
+    @Override
+    public String toString() {
+        return "PetrolShedAdmin{" +
+                "PetrolShedId='" + PetrolShedId + '\'' +
+                ", PetrolShedName='" + PetrolShedName + '\'' +
+                ", AvailableQuantity='" + AvailableQuantity + '\'' +
+                '}';
+    }
 }

@@ -9,12 +9,13 @@ import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 
 public interface ApiInterface {
 
-    String JSON_URL_froPetrolStation = "http://192.168.1.14:45456/api/petrolshed";
-    String JSON_URL_BASE = "http://192.168.1.14:45456";
-    String JSON_URL_froCountUser = "http://192.168.1.14:45456/api/user/count/";
+    String JSON_URL_froPetrolStation = "http://192.168.1.14:45466/api/petrolshed";
+    String JSON_URL_BASE = "http://192.168.1.14:45466";
+    String JSON_URL_froCountUser = "http://192.168.1.14:45466/api/user/count/";
 
     @POST("/api/petrolshed")
 //    @Headers({ "Content-Type: application/json;charset=UTF-8"})
@@ -25,5 +26,10 @@ public interface ApiInterface {
 //    @Headers({ "Content-Type: application/json;charset=UTF-8"})
 //    Call<PetrolShedAdmin> getPetrolShedInformation(@Field("PetrolShedId") String PetrolShedId, @Field("PetrolShedName") String PetrolShedName);
     Call<User> addUser(@Body User user);
+
+    @PUT("/api/petrolshed")
+//    @Headers({ "Content-Type: application/json;charset=UTF-8"})
+//    Call<PetrolShedAdmin> getPetrolShedInformation(@Field("PetrolShedId") String PetrolShedId, @Field("PetrolShedName") String PetrolShedName);
+    Call<PetrolShedAdmin> updatePetrolShed(@Body PetrolShedAdmin petrolShedAdmin);
 
 }

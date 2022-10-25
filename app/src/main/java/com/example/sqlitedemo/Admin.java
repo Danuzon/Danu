@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -16,6 +17,7 @@ import retrofit2.Response;
 public class Admin extends AppCompatActivity {
 
     private Button btnSendPostRequest;
+    private EditText petrolQtyInput;
 
 
     @Override
@@ -24,6 +26,7 @@ public class Admin extends AppCompatActivity {
         setContentView(R.layout.activity_admin);
 
         btnSendPostRequest = findViewById(R.id.btnSendPostRequest);
+        petrolQtyInput = findViewById(R.id.petrolQty);
         btnSendPostRequest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -35,10 +38,11 @@ public class Admin extends AppCompatActivity {
     }
     private void btnSendPostRequestClicked() {
 
-        final PetrolShedAdmin petrolShedAdmin = new PetrolShedAdmin("52","colomboPetrol2","222");
-
+        String qty = petrolQtyInput.getText().toString();
+        PetrolShedAdmin petrolShedAdmin = new PetrolShedAdmin("IT3","ABC23",qty);
+        Log.e(TAG, "onResponseff: "+ petrolShedAdmin);
         ApiInterface apiInterface = RetrofitClient.getRetrofitInstance().create(ApiInterface.class);
-        Call<PetrolShedAdmin> call  = apiInterface.createTask(petrolShedAdmin);
+        Call<PetrolShedAdmin> call  = apiInterface.updatePetrolShed(petrolShedAdmin);
         call.enqueue((new Callback<PetrolShedAdmin>() {
             @Override
             public void onResponse(Call<PetrolShedAdmin> call, Response<PetrolShedAdmin> response) {

@@ -3,7 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/teal_200"
+    android:divider="#f00"
+    android:dividerHeight="10dp">
 
     <TextView
         android:id="@+id/textView"
@@ -13,7 +16,7 @@
         android:layout_marginTop="16dp"
         android:fontFamily="sans-serif-black"
         android:text="TextView"
-        android:textColor="#050505"
+        android:textColor="#3E2121"
         android:textSize="36sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
