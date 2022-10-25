@@ -6,6 +6,7 @@ public class PetrolShedAdmin {
     private String PetrolShedName;
     private String AvailableQuantity;
 
+
     public PetrolShedAdmin( String petrolShedId, String petrolShedName, String availableQuantity) {
         PetrolShedId = petrolShedId;
         PetrolShedName = petrolShedName;

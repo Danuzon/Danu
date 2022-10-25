@@ -29,16 +29,16 @@ public class HomeActivity extends AppCompatActivity {
 
     private ListView lv;
 
-    String PetrolShedName,age;
+    String PetrolShedName, AvailableQuantity, PetrolShedId;
 
-   String JSON_URL = ApiInterface.JSON_URL_froPetrolStation ;
+    String JSON_URL = ApiInterface.JSON_URL_froPetrolStation;
 //private static String JSON_URL = "https://run.mocky.io/v3/76293af7-867f-407a-ae0a-b3da44337801";
 
 //    private static String JSON_URL = "https://run.mocky.io/v3/e2819273-f812-416e-a589-399ba17ecaf4";
 //     private static String JSON_URL = "https://run.mocky.io/v3/3f5709d9-7d7d-4ebe-ac1e-cec42a8882cb";
 
 
-    ArrayList<HashMap<String,String>> friendsList;
+    ArrayList<HashMap<String, String>> friendsList;
 
 
     @Override
@@ -50,7 +50,6 @@ public class HomeActivity extends AppCompatActivity {
         lv = findViewById(R.id.listview);
 
 
-
         GetData getData = new GetData();
         getData.execute();
 
@@ -58,137 +57,118 @@ public class HomeActivity extends AppCompatActivity {
     }
 
 
+    public class GetData extends AsyncTask<String, String, String> {
+
+        @Override
+        protected String doInBackground(String... strings) {
+            String current = "";
+
+            try {
+                URL url;
+                HttpURLConnection urlConnection = null;
+
+                try {
+                    url = new URL(JSON_URL);
+                    urlConnection = (HttpURLConnection) url.openConnection();
+
+                    InputStream in = urlConnection.getInputStream();
+                    InputStreamReader isr = new InputStreamReader(in);
+
+                    int data = isr.read();
+                    while (data != -1) {
+
+                        current += (char) data;
+                        data = isr.read();
+
+                    }
+                    Log.d("success", "test3 method -3" + current);
+                    return current;
 
 
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } finally {
+                    if (urlConnection != null) {
+                        urlConnection.disconnect();
+                    }
+                }
+            } catch (Exception e) {
 
+                e.printStackTrace();
+            }
+            return current;
+        }
 
+        @Override
+        protected void onPostExecute(String s) {
 
-   public class GetData extends AsyncTask<String, String, String>{
-
-       @Override
-       protected String doInBackground(String... strings) {
-           String current = "";
-
-
-           try {
-               URL url;
-               HttpURLConnection urlConnection = null;
-
-               try {
-                   url = new URL(JSON_URL);
-                   urlConnection = (HttpURLConnection) url.openConnection();
-
-                   InputStream in = urlConnection.getInputStream();
-                   InputStreamReader isr = new InputStreamReader(in);
-
-                   int data = isr.read();
-                   while (data != -1) {
-
-                       current += (char) data;
-                       data = isr.read();
-
-                   }
-                   Log.d("success", "test method -3" + current);
-                   return current;
-
-
-               } catch (MalformedURLException e) {
-                   e.printStackTrace();
-               } catch (IOException e) {
-                   e.printStackTrace();
-               } finally {
-                   if (urlConnection != null) {
-                       urlConnection.disconnect();
-                   }
-               }
-           }catch (Exception e) {
-
-               e.printStackTrace();
-           }
-              return current;
-       }
-
-       @Override
-       protected void onPostExecute(String s) {
-
-           String data = "[{\"name\": \"sandeep\",\"age\":30},{\"name\": \"vivan\",\"age\":5}]  ";
+            String data = "[{\"name\": \"sandeep\",\"age\":30},{\"name\": \"vivan\",\"age\":5}]  ";
 //           String data3 = s.substring(1);
 //           String data4 = data3.substring(0, data3.length() - 1);
 //           String data5 = "[" + data4 + "]";
-           Log.d("success", "test method66" + s);
+            Log.d("success", "test method66" + s);
 
-           try {
+            try {
 //               Log.d("success", "test method6 data4" + data4);
 
-               JSONArray jsonArray = new JSONArray(s);
+                JSONArray jsonArray = new JSONArray(s);
 
-               Log.d("success", "test method7");
+                Log.d("success", "test method7");
 //               JSONArray jsonArray = jsonObject.getJSONArray("Friends");
 
-               Log.d("success", "test method" + jsonArray);
-               Log.d("success", "test method2" + s);
-               for (int i=0; i<jsonArray.length(); i++){
+                Log.d("success", "test method" + jsonArray);
+                Log.d("success", "test method2" + s);
+                for (int i = 0; i < jsonArray.length(); i++) {
 
 
-                   JSONObject jsonObject1 = jsonArray.getJSONObject(i);
+                    JSONObject jsonObject1 = jsonArray.getJSONObject(i);
 
-                   PetrolShedName = jsonObject1.getString("PetrolShedName");
-                   age = jsonObject1.getString("AvailableQuantity");
+                    PetrolShedName = jsonObject1.getString("PetrolShedName");
+                    AvailableQuantity = jsonObject1.getString("AvailableQuantity");
+                    PetrolShedId = jsonObject1.getString("PetrolShedId");
 
+                    //Hashmap
+                    HashMap<String, String> friends = new HashMap<>();
 
+                    friends.put("PetrolShedName", PetrolShedName);
+                    friends.put("AvailableQuantity", AvailableQuantity);
+                    friends.put("PetrolShedId", PetrolShedId);
 
-                   //Hashmap
-                   HashMap<String, String> friends = new HashMap<>();
-
-                   friends.put("PetrolShedName", PetrolShedName);
-                   friends.put("age", age);
-
-                   friendsList.add(friends);
-
-
+                    friendsList.add(friends);
 
 
+                }
 
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
 
-               }
+            //Displaying the results
 
-           } catch (JSONException e) {
-               e.printStackTrace();
-           }
+            ListAdapter adapter = new SimpleAdapter(
+                    HomeActivity.this,
+                    friendsList,
+                    R.layout.row_layout,
+                    new String[]{"PetrolShedName", "AvailableQuantity"},
+                    new int[]{R.id.textView, R.id.textView2});
 
-           //Displaying the results
+            lv.setAdapter(adapter);
+            lv.setClickable(true);
+            lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    Intent a = new Intent(HomeActivity.this, QueueDetailsActivity.class);
+                    a.putExtra("PetrolShedName", friendsList.get(i).get("PetrolShedName"));
+                    a.putExtra("AvailableQuantity", friendsList.get(i).get("AvailableQuantity"));
+                    a.putExtra("PetrolShedId", friendsList.get(i).get("PetrolShedId"));
+                    startActivity(a);
+                }
+            });
 
-           ListAdapter adapter = new SimpleAdapter(
-                   HomeActivity.this,
-                   friendsList,
-                   R.layout.row_layout,
-                   new String[] {"PetrolShedName", "age"},
-                   new int[]{R.id.textView, R.id.textView2});
-
-           lv.setAdapter(adapter);
-           lv.setClickable(true);
-           lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-               @Override
-               public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                   Intent a = new Intent(HomeActivity.this,QueueDetailsActivity.class);
-                   a.putExtra("name",friendsList.get(i).get("PetrolShedName"));
-                   a.putExtra("age",friendsList.get(i).get("age"));
-                   startActivity(a);
-               }
-           });
-
-       }
-   }
-
-
-
-
-
-
-
-
-
-
+        }
+    }
 
 
 }

@@ -15,4 +15,44 @@ public class User {
         PetrolFillStatus = petrolFillStatus;
         PetrolFillQuantity = petrolFillQuantity;
     }
+
+    public String getUserId() {
+        return UserId;
+    }
+
+    public void setUserId(String userId) {
+        UserId = userId;
+    }
+
+    public String getUserName() {
+        return UserName;
+    }
+
+    public void setUserName(String userName) {
+        UserName = userName;
+    }
+
+    public String getPetrolShed() {
+        return PetrolShed;
+    }
+
+    public void setPetrolShed(String petrolShed) {
+        PetrolShed = petrolShed;
+    }
+
+    public String getPetrolFillStatus() {
+        return PetrolFillStatus;
+    }
+
+    public void setPetrolFillStatus(String petrolFillStatus) {
+        PetrolFillStatus = petrolFillStatus;
+    }
+
+    public String getPetrolFillQuantity() {
+        return PetrolFillQuantity;
+    }
+
+    public void setPetrolFillQuantity(String petrolFillQuantity) {
+        PetrolFillQuantity = petrolFillQuantity;
+    }
 }
