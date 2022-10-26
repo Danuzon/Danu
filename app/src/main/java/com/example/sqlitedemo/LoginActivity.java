@@ -43,7 +43,7 @@ public class LoginActivity extends AppCompatActivity {
                     Boolean checkuserpass=DB.checkusernamepassword(user,pass);
 
                     if(checkuserpass==true){
-                        if(user.equals("adminRaj")){
+                        if(user.equals("adminAmal")){
                             Toast.makeText(LoginActivity.this, "your are admin person", Toast.LENGTH_SHORT).show();
                             Intent intent=new Intent(getApplicationContext(),Admin.class);
                             startActivity(intent);

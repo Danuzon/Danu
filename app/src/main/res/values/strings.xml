@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name"> Petrol Shed APP</string>
+
+    <string-array name="numbers">
+        <item>Car</item>
+        <item>Motor Bike</item>
+
+    </string-array>
+
 </resources>

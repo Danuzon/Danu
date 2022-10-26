@@ -10,10 +10,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.SimpleAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -33,7 +36,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class QueueDetailsActivity extends AppCompatActivity {
+public class QueueDetailsActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     String PetrolShedName, AvailableQuantity, PetrolShedId;
     private TextView petrolShedNameOut, quantityOut, peopleInQueue;
     private Button joButton;
@@ -46,7 +49,14 @@ public class QueueDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_queue_details);
 
-        petrolShedNameOut = findViewById(R.id.petrolShedName);
+        Spinner spinner = findViewById(R.id.spinner1);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.numbers, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
+
+
+    petrolShedNameOut = findViewById(R.id.petrolShedName);
         quantityOut = findViewById(R.id.petrolQuantity);
         Log.e(TAG, "onResponse Irfan: " + "testing");
 
@@ -105,6 +115,18 @@ public class QueueDetailsActivity extends AppCompatActivity {
 
             }
         }));
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        String text = parent.getItemAtPosition(position).toString();
+        Toast.makeText(parent.getContext(), text, Toast.LENGTH_SHORT).show();
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 
 
@@ -218,6 +240,8 @@ public class QueueDetailsActivity extends AppCompatActivity {
 //                    startActivity(a);
 //                }
 //            });
+
+
 
         }
     }
