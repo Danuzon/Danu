@@ -17,7 +17,7 @@ public class LoginActivity extends AppCompatActivity {
     Button signin;
     DBHelper DB;
 
-
+    static String userNameFromLogin;
 
 
     @Override
@@ -36,6 +36,8 @@ public class LoginActivity extends AppCompatActivity {
 
                 String user=username.getText().toString();
                 String pass=password.getText().toString();
+
+                userNameFromLogin = user;
 
                 if(TextUtils.isEmpty(user) || TextUtils.isEmpty(pass))
                     Toast.makeText(LoginActivity.this, "All fields Required", Toast.LENGTH_SHORT).show();

@@ -27,6 +27,7 @@ import java.util.HashMap;
 
 public class HomeActivity extends AppCompatActivity {
 
+    static String PetrolShedIdForOtherComponent;
     private ListView lv;
 
     String PetrolShedName, AvailableQuantity, PetrolShedId;
@@ -159,6 +160,8 @@ public class HomeActivity extends AppCompatActivity {
             lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    PetrolShedIdForOtherComponent = friendsList.get(i).get("PetrolShedId");
+
                     Intent a = new Intent(HomeActivity.this, QueueDetailsActivity.class);
                     a.putExtra("PetrolShedName", friendsList.get(i).get("PetrolShedName"));
                     a.putExtra("AvailableQuantity", friendsList.get(i).get("AvailableQuantity"));

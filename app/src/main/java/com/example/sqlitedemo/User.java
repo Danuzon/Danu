@@ -55,4 +55,15 @@ public class User {
     public void setPetrolFillQuantity(String petrolFillQuantity) {
         PetrolFillQuantity = petrolFillQuantity;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "UserId='" + UserId + '\'' +
+                ", UserName='" + UserName + '\'' +
+                ", PetrolShed='" + PetrolShed + '\'' +
+                ", PetrolFillStatus='" + PetrolFillStatus + '\'' +
+                ", PetrolFillQuantity='" + PetrolFillQuantity + '\'' +
+                '}';
+    }
 }

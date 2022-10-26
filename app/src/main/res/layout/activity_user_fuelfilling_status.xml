@@ -15,22 +15,39 @@
         android:text="Exit before pump fuel"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.39" />
+        app:layout_constraintVertical_bias="0.337" />
+
+    <EditText
+        android:id="@+id/petrolQtyFromUser"
+        android:layout_width="178dp"
+        android:layout_height="56dp"
+        android:background="@drawable/edittextbackground"
+        android:backgroundTint="@color/white"
+        android:hint="Petrol Qty"
+        android:paddingLeft="20dp"
+        android:textColorHint="#009688"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toTopOf="@+id/ExitAfterPumpFuel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/exitBeforePumpFuel"
+        app:layout_constraintVertical_bias="0.795" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/ExitAfterPumpFuel"
         android:layout_width="190dp"
         android:layout_height="74dp"
         android:backgroundTint="#515A6A"
         android:text="Exit After pump fuel"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/exitBeforePumpFuel"
-        app:layout_constraintVertical_bias="0.39" />
+        app:layout_constraintVertical_bias="0.548" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
