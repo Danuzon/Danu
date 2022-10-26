@@ -48,18 +48,12 @@ public class Admin extends AppCompatActivity {
             public void onResponse(Call<PetrolShedAdmin> call, Response<PetrolShedAdmin> response) {
 
                 Log.e(TAG, "onResponse: "+response.code());
-//                Log.e(TAG, "onResponse: "+response.body(). getPetrolShedId());
-//                Log.e(TAG, "onResponse: "+response.body().getPetrolShedName());
-//                Log.e(TAG, "onResponse: "+response.body().getAvailableQuantity());
-              //  Log.e(TAG, "onResponse: "+response.body().getId());
-
 
             }
 
             @Override
             public void onFailure(Call<PetrolShedAdmin> call, Throwable t) {
 
-                Log.e(TAG, "onFailure: "+t.getMessage() );
 
             }
         }));

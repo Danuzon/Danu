@@ -18,18 +18,14 @@ public interface ApiInterface {
     String JSON_URL_froCountUser = "http://192.168.1.192:45456/api/user/count/";
 
     @POST("/api/petrolshed")
-//    @Headers({ "Content-Type: application/json;charset=UTF-8"})
-//    Call<PetrolShedAdmin> getPetrolShedInformation(@Field("PetrolShedId") String PetrolShedId, @Field("PetrolShedName") String PetrolShedName);
+
     Call<PetrolShedAdmin> createTask(@Body PetrolShedAdmin petrolShedAdmin);
 
     @POST("/api/user")
-//    @Headers({ "Content-Type: application/json;charset=UTF-8"})
-//    Call<PetrolShedAdmin> getPetrolShedInformation(@Field("PetrolShedId") String PetrolShedId, @Field("PetrolShedName") String PetrolShedName);
     Call<User> addUser(@Body User user);
 
     @PUT("/api/petrolshed")
-//    @Headers({ "Content-Type: application/json;charset=UTF-8"})
-//    Call<PetrolShedAdmin> getPetrolShedInformation(@Field("PetrolShedId") String PetrolShedId, @Field("PetrolShedName") String PetrolShedName);
+
     Call<PetrolShedAdmin> updatePetrolShed(@Body PetrolShedAdmin petrolShedAdmin);
 
 }
