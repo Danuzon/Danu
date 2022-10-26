@@ -57,7 +57,6 @@ public class UserFuelfillingStatus extends AppCompatActivity {
     private void btnExitBeforePumpFuelClicked() {
         Log.e(TAG, "Testing of exitbefore pump: ");
         String nameOfUser = LoginActivity.userNameFromLogin ;
-//        final User user = new User("7", "raddy", PetrolShedId, "join", "1");
         Log.e(TAG, "onResponsenameOfUser: " + nameOfUser);
         ApiInterface apiInterface = RetrofitClient.getRetrofitInstance().create(ApiInterface.class);
         Call<Void> call = apiInterface.deleteUser(nameOfUser);

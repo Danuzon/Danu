@@ -30,11 +30,12 @@ public class HomeActivity extends AppCompatActivity {
     static String PetrolShedIdForOtherComponent;
     private ListView lv;
 
-    String PetrolShedName, AvailableQuantity, PetrolShedId;
+    String PetrolShedName, AvailableQuantity, PetrolShedId, noOfPerson;
 
     String JSON_URL = ApiInterface.JSON_URL_froPetrolStation;
 
     ArrayList<HashMap<String, String>> friendsList;
+    ArrayList<HashMap<String, String>> friendsList2;
 
 
     @Override
@@ -43,6 +44,7 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         friendsList = new ArrayList<>();
+        friendsList2 = new ArrayList<>();
         lv = findViewById(R.id.listview);
 
 
@@ -120,6 +122,8 @@ public class HomeActivity extends AppCompatActivity {
                     AvailableQuantity = jsonObject1.getString("AvailableQuantity");
                     PetrolShedId = jsonObject1.getString("PetrolShedId");
 
+                    noOfPerson = "15";
+
                     //Hashmap
                     HashMap<String, String> friends = new HashMap<>();
 
@@ -128,6 +132,13 @@ public class HomeActivity extends AppCompatActivity {
                     friends.put("PetrolShedId", PetrolShedId);
 
                     friendsList.add(friends);
+
+                    HashMap<String, String> friends2 = new HashMap<>();
+
+                    friends2.put("PetrolShedName", PetrolShedName);
+                    friends2.put("AvailableQuantity", AvailableQuantity);
+                    friends2.put("noOfPerson", noOfPerson);
+                    friendsList2.add(friends);
 
 
                 }
@@ -140,7 +151,7 @@ public class HomeActivity extends AppCompatActivity {
 
             ListAdapter adapter = new SimpleAdapter(
                     HomeActivity.this,
-                    friendsList,
+                    friendsList2,
                     R.layout.row_layout,
                     new String[]{"PetrolShedName", "AvailableQuantity"},
                     new int[]{R.id.textView, R.id.textView2});

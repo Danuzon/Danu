@@ -92,7 +92,7 @@ public class QueueDetailsActivity extends AppCompatActivity implements AdapterVi
     private void btnSendPostRequestClicked() {
 
         String UserName = LoginActivity.userNameFromLogin;
-        final User user = new User("7", UserName, PetrolShedId, "join", "1");
+        final User user = new User(UserName, PetrolShedId,"join","car","0");
 
         ApiInterface apiInterface = RetrofitClient.getRetrofitInstance().create(ApiInterface.class);
         Call<User> call = apiInterface.addUser(user);

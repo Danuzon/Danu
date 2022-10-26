@@ -2,26 +2,26 @@ package com.example.sqlitedemo;
 
 public class User {
 
-    String UserId;
     String UserName;
     String PetrolShed;
     String PetrolFillStatus;
+    String VehicleType;
     String PetrolFillQuantity;
 
-    public User(String userId, String userName, String petrolShed, String petrolFillStatus, String petrolFillQuantity) {
-        UserId = userId;
+    public User(String userName, String petrolShed, String petrolFillStatus, String vehicleType, String petrolFillQuantity) {
         UserName = userName;
         PetrolShed = petrolShed;
         PetrolFillStatus = petrolFillStatus;
+        VehicleType = vehicleType;
         PetrolFillQuantity = petrolFillQuantity;
     }
 
-    public String getUserId() {
-        return UserId;
+    public String getVehicleType() {
+        return VehicleType;
     }
 
-    public void setUserId(String userId) {
-        UserId = userId;
+    public void setVehicleType(String vehicleType) {
+        VehicleType = vehicleType;
     }
 
     public String getUserName() {
@@ -59,10 +59,10 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "UserId='" + UserId + '\'' +
-                ", UserName='" + UserName + '\'' +
+                "UserName='" + UserName + '\'' +
                 ", PetrolShed='" + PetrolShed + '\'' +
                 ", PetrolFillStatus='" + PetrolFillStatus + '\'' +
+                ", VehicleType='" + VehicleType + '\'' +
                 ", PetrolFillQuantity='" + PetrolFillQuantity + '\'' +
                 '}';
     }
