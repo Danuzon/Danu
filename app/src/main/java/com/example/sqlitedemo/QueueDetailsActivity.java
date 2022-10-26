@@ -58,7 +58,7 @@ public class QueueDetailsActivity extends AppCompatActivity implements AdapterVi
 
     petrolShedNameOut = findViewById(R.id.petrolShedName);
         quantityOut = findViewById(R.id.petrolQuantity);
-        Log.e(TAG, "onResponse Irfan: " + "testing");
+
 
 
         peopleInQueue = findViewById(R.id.numberOfPeople);
@@ -101,18 +101,13 @@ public class QueueDetailsActivity extends AppCompatActivity implements AdapterVi
             public void onResponse(Call<User> call, Response<User> response) {
 
                 Log.e(TAG, "onResponse: " + response.code());
-//                Log.e(TAG, "onResponse: "+response.body(). getPetrolShedId());
-//                Log.e(TAG, "onResponse: "+response.body().getPetrolShedName());
-//                Log.e(TAG, "onResponse: "+response.body().getAvailableQuantity());
-                //  Log.e(TAG, "onResponse: "+response.body().getId());
-
 
             }
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
 
-                Log.e(TAG, "onFailure: " + t.getMessage());
+
 
             }
         }));
@@ -157,7 +152,7 @@ public class QueueDetailsActivity extends AppCompatActivity implements AdapterVi
                         data = isr.read();
 
                     }
-                    Log.d("success", "testfromUser method -3" + current);
+
                     return current;
 
 
@@ -181,38 +176,23 @@ public class QueueDetailsActivity extends AppCompatActivity implements AdapterVi
         protected void onPostExecute(String s) {
 
             String data = "[{\"name\": \"sandeep\",\"age\":30},{\"name\": \"vivan\",\"age\":5}]  ";
-//           String data3 = s.substring(1);
-//           String data4 = data3.substring(0, data3.length() - 1);
-//           String data5 = "[" + data4 + "]";
-            Log.d("success FromUser", "test method77" + s);
 
             try {
-//               Log.d("success", "test method6 data4" + data4);
 
                 JSONArray jsonArray = new JSONArray(s);
 
                 int numQry = jsonArray.length();
                 peopleInQueue.setText(String.valueOf(numQry));
-                Log.d("success", "test method7");
-//               JSONArray jsonArray = jsonObject.getJSONArray("Friends");
 
-                Log.d("success", "test method" + jsonArray);
-                Log.d("success", "test method2" + s);
+
                 for (int i = 0; i < jsonArray.length(); i++) {
 
 
                     JSONObject jsonObject1 = jsonArray.getJSONObject(i);
 
-//                    PetrolShedName = jsonObject1.getString("PetrolShedName");
-//                    AvailableQuantity = jsonObject1.getString("AvailableQuantity");
 
                     //Hashmap
                     HashMap<String, String> friends = new HashMap<>();
-
-//                    friends.put("PetrolShedName", PetrolShedName);
-//                    friends.put("AvailableQuantity", AvailableQuantity);
-
-//                    friendsList.add(friends);
 
 
                 }
@@ -221,26 +201,6 @@ public class QueueDetailsActivity extends AppCompatActivity implements AdapterVi
                 e.printStackTrace();
             }
 
-            //Displaying the results
-
-//            ListAdapter adapter = new SimpleAdapter(
-//                    HomeActivity.this,
-//                    friendsList,
-//                    R.layout.row_layout,
-//                    new String[]{"PetrolShedName", "AvailableQuantity"},
-//                    new int[]{R.id.textView, R.id.textView2});
-
-//            lv.setAdapter(adapter);
-//            lv.setClickable(true);
-//            lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//                @Override
-//                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                    Intent a = new Intent(HomeActivity.this, QueueDetailsActivity.class);
-//                    a.putExtra("PetrolShedName", friendsList.get(i).get("PetrolShedName"));
-//                    a.putExtra("AvailableQuantity", friendsList.get(i).get("AvailableQuantity"));
-//                    startActivity(a);
-//                }
-//            });
 
 
 

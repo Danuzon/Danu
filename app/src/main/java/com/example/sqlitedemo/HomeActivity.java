@@ -33,11 +33,6 @@ public class HomeActivity extends AppCompatActivity {
     String PetrolShedName, AvailableQuantity, PetrolShedId;
 
     String JSON_URL = ApiInterface.JSON_URL_froPetrolStation;
-//private static String JSON_URL = "https://run.mocky.io/v3/76293af7-867f-407a-ae0a-b3da44337801";
-
-//    private static String JSON_URL = "https://run.mocky.io/v3/e2819273-f812-416e-a589-399ba17ecaf4";
-//     private static String JSON_URL = "https://run.mocky.io/v3/3f5709d9-7d7d-4ebe-ac1e-cec42a8882cb";
-
 
     ArrayList<HashMap<String, String>> friendsList;
 
@@ -82,7 +77,7 @@ public class HomeActivity extends AppCompatActivity {
                         data = isr.read();
 
                     }
-                    Log.d("success", "test3 method -3" + current);
+
                     return current;
 
 
@@ -106,21 +101,16 @@ public class HomeActivity extends AppCompatActivity {
         protected void onPostExecute(String s) {
 
             String data = "[{\"name\": \"sandeep\",\"age\":30},{\"name\": \"vivan\",\"age\":5}]  ";
-//           String data3 = s.substring(1);
-//           String data4 = data3.substring(0, data3.length() - 1);
-//           String data5 = "[" + data4 + "]";
-            Log.d("success", "test method66" + s);
+
 
             try {
-//               Log.d("success", "test method6 data4" + data4);
 
                 JSONArray jsonArray = new JSONArray(s);
 
-                Log.d("success", "test method7");
-//               JSONArray jsonArray = jsonObject.getJSONArray("Friends");
+
 
                 Log.d("success", "test method" + jsonArray);
-                Log.d("success", "test method2" + s);
+
                 for (int i = 0; i < jsonArray.length(); i++) {
 
 
