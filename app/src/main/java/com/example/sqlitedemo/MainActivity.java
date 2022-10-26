@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         repassword=findViewById(R.id.repassword);
         DB= new DBHelper(this);
 
-
+// defining signup
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

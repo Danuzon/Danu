@@ -3,6 +3,7 @@ package com.example.sqlitedemo;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+// defining retrofit library
 public class RetrofitClient {
     public static Retrofit retrofit;
 

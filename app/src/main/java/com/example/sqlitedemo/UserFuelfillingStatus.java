@@ -29,6 +29,7 @@ public class UserFuelfillingStatus extends AppCompatActivity {
         exitBeforePumpFuel = findViewById(R.id.exitBeforePumpFuel);
         petrolQty = findViewById(R.id.petrolQtyFromUser);
 
+// implement user exit before pump fuel method
 
         exitBeforePumpFuel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,7 +41,7 @@ public class UserFuelfillingStatus extends AppCompatActivity {
             }
         });
 
-
+// implement user exit after pump fuel method
         exitAfterPumpFuel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

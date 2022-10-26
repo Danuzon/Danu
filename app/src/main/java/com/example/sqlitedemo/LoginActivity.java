@@ -31,6 +31,10 @@ public class LoginActivity extends AppCompatActivity {
         DB=new DBHelper(this);
 
         signin.setOnClickListener(new View.OnClickListener() {
+
+            //checking access to the admin
+
+
             @Override
             public void onClick(View v) {
 

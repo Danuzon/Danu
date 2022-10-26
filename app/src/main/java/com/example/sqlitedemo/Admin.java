@@ -19,7 +19,7 @@ public class Admin extends AppCompatActivity {
     private Button btnSendPostRequest;
     private EditText petrolQtyInput;
 
-
+// creating onCreate method
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +36,8 @@ public class Admin extends AppCompatActivity {
         });
 
     }
+
+    // defining petrolshed admin
     private void btnSendPostRequestClicked() {
 
         String qty = petrolQtyInput.getText().toString();

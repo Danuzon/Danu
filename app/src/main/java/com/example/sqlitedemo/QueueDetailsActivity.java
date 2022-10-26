@@ -49,6 +49,7 @@ public class QueueDetailsActivity extends AppCompatActivity implements AdapterVi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_queue_details);
 
+        // adding combo box
         Spinner spinner = findViewById(R.id.spinner1);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.numbers, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -89,6 +90,7 @@ public class QueueDetailsActivity extends AppCompatActivity implements AdapterVi
         getData.execute();
     }
 
+    //defining user requirements checking
     private void btnSendPostRequestClicked() {
 
         String UserName = LoginActivity.userNameFromLogin;

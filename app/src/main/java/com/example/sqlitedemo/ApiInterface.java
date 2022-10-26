@@ -15,9 +15,11 @@ import retrofit2.http.Path;
 
 public interface ApiInterface {
 
-    String JSON_URL_froPetrolStation = "http://192.168.1.14:45458/api/petrolshed";
-    String JSON_URL_BASE = "http://192.168.1.14:45458";
-    String JSON_URL_froCountUser = "http://192.168.1.14:45458/api/user/count/";
+    //connecting app to backend using URL
+
+    String JSON_URL_froPetrolStation = "http://192.168.1.192:45456/api/petrolshed";
+    String JSON_URL_BASE = "http://192.168.1.192:45456";
+    String JSON_URL_froCountUser = "http://192.168.1.192:45456/api/user/count/";
 
     @POST("/api/petrolshed")
 
