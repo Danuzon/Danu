@@ -12,7 +12,12 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+   /*
+registering activity will be handle from here
+adding user details into the database
+ */
 
+    static String userNameFromAdmin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
                 String user=username.getText().toString();
                 String pass=password.getText().toString();
                 String repass=repassword.getText().toString();
+
+                userNameFromAdmin = user;
 
                 if(TextUtils.isEmpty(user) || TextUtils.isEmpty(pass) || TextUtils.isEmpty(repass))
                     Toast.makeText(MainActivity.this,"All fields Required",Toast.LENGTH_SHORT).show();

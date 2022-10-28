@@ -27,12 +27,17 @@ import java.util.HashMap;
 
 public class HomeActivity extends AppCompatActivity {
 
+
+    /*
+After login from the user Home activity page will be display for the user
+*/
+
     static String PetrolShedIdForOtherComponent;
     private ListView lv;
 
     String PetrolShedName, AvailableQuantity, PetrolShedId, noOfPerson;
 
-    String JSON_URL = ApiInterface.JSON_URL_froPetrolStation;
+    String JSON_URL = ApiInterface.JSON_URL_detailsWithChangedValue;
 
     ArrayList<HashMap<String, String>> friendsList;
     ArrayList<HashMap<String, String>> friendsList2;
@@ -54,7 +59,7 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
-
+// it is used to retrieve the Get method to see the all petrol station detail
     public class GetData extends AsyncTask<String, String, String> {
 
         @Override
@@ -123,7 +128,7 @@ public class HomeActivity extends AppCompatActivity {
                     AvailableQuantity = jsonObject1.getString("AvailableQuantity");
                     PetrolShedId = jsonObject1.getString("PetrolShedId");
 
-                    noOfPerson = "15";
+                    noOfPerson = jsonObject1.getString("peopleCount");
 
                     //Hashmap
                     HashMap<String, String> friends = new HashMap<>();
@@ -131,6 +136,7 @@ public class HomeActivity extends AppCompatActivity {
                     friends.put("PetrolShedName", PetrolShedName);
                     friends.put("AvailableQuantity", AvailableQuantity);
                     friends.put("PetrolShedId", PetrolShedId);
+                    friends.put("noOfPerson", noOfPerson);
 
                     friendsList.add(friends);
 
@@ -152,14 +158,18 @@ public class HomeActivity extends AppCompatActivity {
 
             ListAdapter adapter = new SimpleAdapter(
                     HomeActivity.this,
-                    friendsList2,
+                    friendsList,
                     R.layout.row_layout,
-                    new String[]{"PetrolShedName", "AvailableQuantity"},
-                    new int[]{R.id.textView, R.id.textView2});
+                    new String[]{"PetrolShedName", "AvailableQuantity", "noOfPerson"},
+                    new int[]{R.id.textView, R.id.textView2, R.id.textView15});
 
             lv.setAdapter(adapter);
             lv.setClickable(true);
             lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+
+                //This place used to pass the variable from this page to other page
+
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                     PetrolShedIdForOtherComponent = friendsList.get(i).get("PetrolShedId");

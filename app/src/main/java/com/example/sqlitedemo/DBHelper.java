@@ -10,6 +10,11 @@ import androidx.annotation.Nullable;
 
 public class DBHelper extends SQLiteOpenHelper {
 
+    /*
+Login and log out DB was connecting and related query was implemented here
+ */
+
+    // DB helper for SQLite
     public static final String DBNAME="login.db";
     public DBHelper(Context context) {
         super(context, "login.db", null,1);

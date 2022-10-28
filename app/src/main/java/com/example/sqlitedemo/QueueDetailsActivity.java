@@ -37,10 +37,19 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class QueueDetailsActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+
+
+       /*
+The user once login he can see the available petrol station can see after that he can see the details of the petrol station
+it is visible to the user that number of people and number of vehicle by category
+ */
+
+
     String PetrolShedName, AvailableQuantity, PetrolShedId;
     private TextView petrolShedNameOut, quantityOut, peopleInQueue;
     private Button joButton;
-    String JSON_URL_FromApi = ApiInterface.JSON_URL_froCountUser;
+    private Spinner spinner;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,14 +59,14 @@ public class QueueDetailsActivity extends AppCompatActivity implements AdapterVi
         setContentView(R.layout.activity_queue_details);
 
         // adding combo box
-        Spinner spinner = findViewById(R.id.spinner1);
+        spinner =(Spinner)findViewById(R.id.spinner1);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.numbers, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
 
 
-    petrolShedNameOut = findViewById(R.id.petrolShedName);
+        petrolShedNameOut = findViewById(R.id.petrolShedName);
         quantityOut = findViewById(R.id.petrolQuantity);
 
 
@@ -88,13 +97,17 @@ public class QueueDetailsActivity extends AppCompatActivity implements AdapterVi
 
         QueueDetailsActivity.GetData getData = new QueueDetailsActivity.GetData();
         getData.execute();
+
     }
 
     //defining user requirements checking
     private void btnSendPostRequestClicked() {
 
         String UserName = LoginActivity.userNameFromLogin;
-        final User user = new User(UserName, PetrolShedId,"join","car","0");
+        String vehicleTypes = spinner.getSelectedItem().toString();
+        final User user = new User(UserName, PetrolShedId,"join",vehicleTypes,"0");
+
+        Log.e(TAG, "onResponseUser: " + user);
 
         ApiInterface apiInterface = RetrofitClient.getRetrofitInstance().create(ApiInterface.class);
         Call<User> call = apiInterface.addUser(user);
@@ -130,7 +143,7 @@ public class QueueDetailsActivity extends AppCompatActivity implements AdapterVi
 
     public class GetData extends AsyncTask<String, String, String> {
 
-        String JSON_URL = JSON_URL_FromApi + PetrolShedId;
+        String JSON_URL = ApiInterface.JSON_URL_froCountUser + PetrolShedId;
 
         @Override
         protected String doInBackground(String... strings) {

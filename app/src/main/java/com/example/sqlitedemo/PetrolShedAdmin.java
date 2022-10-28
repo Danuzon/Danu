@@ -2,6 +2,11 @@ package com.example.sqlitedemo;
 
 public class PetrolShedAdmin {
 
+    /*
+
+Admin model calls is created to handle the Petrol admin object
+*/
+
     private String PetrolShedId;
     private String PetrolShedName;
     private String AvailableQuantity;
@@ -13,6 +18,7 @@ public class PetrolShedAdmin {
         AvailableQuantity = availableQuantity;
     }
 
+    //this method is created for debugging purpose
     @Override
     public String toString() {
         return "PetrolShedAdmin{" +

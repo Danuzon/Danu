@@ -15,7 +15,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Admin extends AppCompatActivity {
-
+/*
+This class used to implement the UI connection of the Admin page of Button and other petrol quantity input page
+ */
     private Button btnSendPostRequest;
     private EditText petrolQtyInput;
 

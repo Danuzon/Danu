@@ -1,6 +1,10 @@
 package com.example.sqlitedemo;
 // defining user attributes
 
+/*
+User Model class is created here to handle the user object efficiently
+ */
+
 public class User {
 
     String UserName;

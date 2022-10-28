@@ -13,6 +13,11 @@ import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
 
+    /*
+    * Login logic was implemented here if the person not in the database and password and user names are wrong,
+    * this page is not allow to go further
+    */
+
     EditText username,password;
     Button signin;
     DBHelper DB;
@@ -41,7 +46,7 @@ public class LoginActivity extends AppCompatActivity {
                 String user=username.getText().toString();
                 String pass=password.getText().toString();
 
-                userNameFromLogin = user;
+                MainActivity.userNameFromAdmin = user;
 
                 if(TextUtils.isEmpty(user) || TextUtils.isEmpty(pass))
                     Toast.makeText(LoginActivity.this, "All fields Required", Toast.LENGTH_SHORT).show();

@@ -16,6 +16,10 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/*
+ User can be update the status
+ if he or she petrol filled or not
+ */
 public class UserFuelfillingStatus extends AppCompatActivity {
 
     Button exitBeforePumpFuel, exitAfterPumpFuel;
@@ -90,7 +94,7 @@ public class UserFuelfillingStatus extends AppCompatActivity {
         String petrolQtyString = petrolQty.getText().toString();
 
 
-        User user = new User("1",nameOfUser,petrolShedString,"completed", petrolQtyString);
+        User user = new User(nameOfUser,petrolShedString,"completed","car", petrolQtyString);
         Log.e(TAG, "onResponse: "+ user);
         ApiInterface apiInterface = RetrofitClient.getRetrofitInstance().create(ApiInterface.class);
         Call<User> call  = apiInterface.updateUser(user);
