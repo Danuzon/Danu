@@ -43,7 +43,8 @@ This class used to implement the UI connection of the Admin page of Button and o
     private void btnSendPostRequestClicked() {
 
         String qty = petrolQtyInput.getText().toString();
-        PetrolShedAdmin petrolShedAdmin = new PetrolShedAdmin("IT3","ABC23",qty);
+        String petrolsShedName = LoginActivity.userNameFromLogin;
+        PetrolShedAdmin petrolShedAdmin = new PetrolShedAdmin(petrolsShedName,"ABC23",qty);
         Log.e(TAG, "onResponseff: "+ petrolShedAdmin);
         ApiInterface apiInterface = RetrofitClient.getRetrofitInstance().create(ApiInterface.class);
         Call<PetrolShedAdmin> call  = apiInterface.updatePetrolShed(petrolShedAdmin);
