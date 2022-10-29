@@ -33,9 +33,10 @@ After login from the user Home activity page will be display for the user
 */
 
     static String PetrolShedIdForOtherComponent;
+
     private ListView lv;
 
-    String PetrolShedName, AvailableQuantity, PetrolShedId, noOfPerson;
+    String PetrolShedName, AvailableQuantity, PetrolShedId, noOfPerson, carCount, motoBiCount;
 
     String JSON_URL = ApiInterface.JSON_URL_detailsWithChangedValue;
 
@@ -127,9 +128,14 @@ After login from the user Home activity page will be display for the user
                     PetrolShedName = jsonObject1.getString("PetrolShedName");
                     AvailableQuantity = jsonObject1.getString("AvailableQuantity");
                     PetrolShedId = jsonObject1.getString("PetrolShedId");
+//                    if(false){
+//                        noOfPerson = String.valueOf(peopQ);
+//                    }else{
+                        noOfPerson = jsonObject1.getString("peopleCount");
+//                    }
 
-                    noOfPerson = jsonObject1.getString("peopleCount");
-
+                    carCount = jsonObject1.getString("carCounting");
+                    motoBiCount = jsonObject1.getString("motorBikeCounting");
                     //Hashmap
                     HashMap<String, String> friends = new HashMap<>();
 
@@ -137,6 +143,8 @@ After login from the user Home activity page will be display for the user
                     friends.put("AvailableQuantity", AvailableQuantity);
                     friends.put("PetrolShedId", PetrolShedId);
                     friends.put("noOfPerson", noOfPerson);
+                    friends.put("carCount", carCount);
+                    friends.put("motoBiCount", motoBiCount);
 
                     friendsList.add(friends);
 
@@ -178,6 +186,9 @@ After login from the user Home activity page will be display for the user
                     a.putExtra("PetrolShedName", friendsList.get(i).get("PetrolShedName"));
                     a.putExtra("AvailableQuantity", friendsList.get(i).get("AvailableQuantity"));
                     a.putExtra("PetrolShedId", friendsList.get(i).get("PetrolShedId"));
+                    a.putExtra("noOfPerson", friendsList.get(i).get("noOfPerson"));
+                    a.putExtra("carCount", friendsList.get(i).get("carCount"));
+                    a.putExtra("motoBiCount", friendsList.get(i).get("motoBiCount"));
                     startActivity(a);
                 }
             });

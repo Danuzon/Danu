@@ -22,6 +22,8 @@ import retrofit2.Response;
  */
 public class UserFuelfillingStatus extends AppCompatActivity {
 
+    static boolean buttonState = true;
+
     Button exitBeforePumpFuel, exitAfterPumpFuel;
     EditText petrolQty;
     @Override

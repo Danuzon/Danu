@@ -7,7 +7,7 @@
     android:padding="10dp"
     android:background="#3F51B5"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".SignUpActivity">
 
 <TextView
     android:layout_width="match_parent"

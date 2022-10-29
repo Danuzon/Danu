@@ -12,8 +12,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListAdapter;
-import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,8 +31,6 @@ import java.util.HashMap;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class QueueDetailsActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -45,8 +41,8 @@ it is visible to the user that number of people and number of vehicle by categor
  */
 
 
-    String PetrolShedName, AvailableQuantity, PetrolShedId;
-    private TextView petrolShedNameOut, quantityOut, peopleInQueue;
+    String PetrolShedName, AvailableQuantity, PetrolShedId, PeopleInQueue, CarCount, MotoCount;
+    private TextView petrolShedNameOut, quantityOut, peopleInQueue, carCount, motoCount;
     private Button joButton;
     private Spinner spinner;
 
@@ -68,9 +64,8 @@ it is visible to the user that number of people and number of vehicle by categor
 
         petrolShedNameOut = findViewById(R.id.petrolShedName);
         quantityOut = findViewById(R.id.petrolQuantity);
-
-
-
+        carCount = findViewById(R.id.car);
+        motoCount = findViewById(R.id.motorBicycle);
         peopleInQueue = findViewById(R.id.numberOfPeople);
         joButton = findViewById(R.id.jButton);
 
@@ -79,19 +74,68 @@ it is visible to the user that number of people and number of vehicle by categor
             PetrolShedName = intent.getStringExtra("PetrolShedName");
             AvailableQuantity = intent.getStringExtra("AvailableQuantity");
             PetrolShedId = intent.getStringExtra("PetrolShedId");
+            PeopleInQueue = intent.getStringExtra("noOfPerson");
+            CarCount = intent.getStringExtra("carCount");
+            MotoCount = intent.getStringExtra("motoBiCount");
+
         }
+
+        LoginActivity.carQ = Integer.parseInt(CarCount);
+        LoginActivity.peopQ = Integer.parseInt(PeopleInQueue);
+        LoginActivity.motoQ = Integer.parseInt(MotoCount);
 
         petrolShedNameOut.setText(PetrolShedName);
         quantityOut.setText(AvailableQuantity);
 
+        if(LoginActivity.UserQueueStatus){
+
+            peopleInQueue.setText(PeopleInQueue);
+            carCount.setText(CarCount);
+            motoCount.setText(MotoCount);
+        }else{
+            peopleInQueue.setText(String.valueOf(LoginActivity.peopQ));
+            carCount.setText(String.valueOf(LoginActivity.carQ));
+            motoCount.setText(String.valueOf(LoginActivity.motoQ));
+        }
+
+
+
+
+
+//        joButton.setVisibility(View.INVISIBLE);
 
         joButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                btnSendPostRequestClicked();
-                Intent intent = new Intent(QueueDetailsActivity.this, UserFuelfillingStatus.class);
-                startActivity(intent);
+
+                String vehiT = spinner.getSelectedItem().toString();
+
+                if(vehiT.equals("null")){
+                    Toast.makeText(QueueDetailsActivity.this, "please select the correct vehicle type", Toast.LENGTH_SHORT).show();
+                }else{
+                    if(LoginActivity.UserQueueStatus){
+                        if(vehiT.equals("car")){
+                            LoginActivity.carQ++;
+                        }
+                        if(vehiT.equals("motor bike")){
+                            LoginActivity.motoQ++;
+                        }
+                        LoginActivity.peopQ++;
+                        peopleInQueue.setText(String.valueOf(LoginActivity.peopQ));
+                        carCount.setText(String.valueOf(LoginActivity.carQ));
+                        motoCount.setText(String.valueOf(LoginActivity.motoQ));
+                        LoginActivity.UserQueueStatus = false;
+                        btnSendPostRequestClicked();
+                        Intent intent = new Intent(QueueDetailsActivity.this, UserFuelfillingStatus.class);
+                        startActivity(intent);
+                    }else{
+                        Intent intent = new Intent(QueueDetailsActivity.this, UserFuelfillingStatus.class);
+                        startActivity(intent);
+                    }
+
+                }
+
             }
         });
 
@@ -197,7 +241,7 @@ it is visible to the user that number of people and number of vehicle by categor
                 JSONArray jsonArray = new JSONArray(s);
 
                 int numQry = jsonArray.length();
-                peopleInQueue.setText(String.valueOf(numQry));
+//                peopleInQueue.setText(String.valueOf(numQry));
 
 
                 for (int i = 0; i < jsonArray.length(); i++) {

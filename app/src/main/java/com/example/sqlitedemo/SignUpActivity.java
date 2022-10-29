@@ -10,14 +10,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class SignUpActivity extends AppCompatActivity {
 
    /*
 registering activity will be handle from here
 adding user details into the database
  */
 
-    static String userNameFromAdmin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +27,7 @@ adding user details into the database
 
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_sign);
 
         username=findViewById(R.id.username);
         password=findViewById(R.id.password);
@@ -46,29 +45,29 @@ adding user details into the database
                 String pass=password.getText().toString();
                 String repass=repassword.getText().toString();
 
-                userNameFromAdmin = user;
+                LoginActivity.userNameFromLogin = user;
 
                 if(TextUtils.isEmpty(user) || TextUtils.isEmpty(pass) || TextUtils.isEmpty(repass))
-                    Toast.makeText(MainActivity.this,"All fields Required",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUpActivity.this,"All fields Required",Toast.LENGTH_SHORT).show();
                 else{
                     if (pass.equals(repass)){
                         Boolean checkuser = DB.checkusername(user);
                         if(checkuser==false){
                             Boolean insert = DB.insertData(user,pass);
                             if(insert==true){
-                                Toast.makeText(MainActivity.this,"Registered Successfully",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SignUpActivity.this,"Registered Successfully",Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(getApplicationContext(),HomeActivity.class);
                                 startActivity(intent);
                             } else {
-                                Toast.makeText(MainActivity.this,"Registration Failed", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SignUpActivity.this,"Registration Failed", Toast.LENGTH_SHORT).show();
                             }
 
                         } else {
-                            Toast.makeText(MainActivity.this,"User already Exists", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SignUpActivity.this,"User already Exists", Toast.LENGTH_SHORT).show();
                         }
 
                         } else {
-                        Toast.makeText(MainActivity.this,"Passwords are not matching", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SignUpActivity.this,"Passwords are not matching", Toast.LENGTH_SHORT).show();
                     }
                     }
                 }

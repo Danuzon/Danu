@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,10 +18,15 @@ public class LoginActivity extends AppCompatActivity {
     */
 
     EditText username,password;
-    Button signin;
+    Button signin, regiter, jButton;
     DBHelper DB;
 
     static String userNameFromLogin;
+
+    static boolean UserQueueStatus = true;
+    static int carQ = 0;
+    static int peopQ = 0;
+    static int motoQ = 0 ;
 
 
     @Override
@@ -33,8 +37,19 @@ public class LoginActivity extends AppCompatActivity {
         username=findViewById(R.id.username1);
         password=findViewById(R.id.password1);
         signin=findViewById(R.id.signin1);
+        regiter=findViewById(R.id.registerBtn);
+        jButton=findViewById(R.id.jButton);
         DB=new DBHelper(this);
 
+
+        regiter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                jButton.setVisibility(view.VISIBLE);
+                Intent intent=new Intent(getApplicationContext(),SignUpActivity.class);
+                startActivity(intent);
+            }
+        });
         signin.setOnClickListener(new View.OnClickListener() {
 
             //checking access to the admin
@@ -46,7 +61,7 @@ public class LoginActivity extends AppCompatActivity {
                 String user=username.getText().toString();
                 String pass=password.getText().toString();
 
-                MainActivity.userNameFromAdmin = user;
+                userNameFromLogin = user;
 
                 if(TextUtils.isEmpty(user) || TextUtils.isEmpty(pass))
                     Toast.makeText(LoginActivity.this, "All fields Required", Toast.LENGTH_SHORT).show();

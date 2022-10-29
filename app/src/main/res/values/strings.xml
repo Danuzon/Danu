@@ -2,10 +2,10 @@
     <string name="app_name"> Petrol Shed APP</string>
 
     <string-array name="numbers">
-        <item>Null</item>
-        <item>Car</item>
-        <item>Motor Bike</item>
-        <item>Others</item>
+        <item>null</item>
+        <item>car</item>
+        <item>motor bike</item>
+        <item>others</item>
 
     </string-array>
 
