@@ -23,11 +23,6 @@ public class LoginActivity extends AppCompatActivity {
 
     static String userNameFromLogin;
 
-    static boolean UserQueueStatus = true;
-    static int carQ = 0;
-    static int peopQ = 0;
-    static int motoQ = 0 ;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

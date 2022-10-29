@@ -45,6 +45,9 @@ it is visible to the user that number of people and number of vehicle by categor
     private TextView petrolShedNameOut, quantityOut, peopleInQueue, carCount, motoCount;
     private Button joButton;
     private Spinner spinner;
+    int carQ,peopQ,motoQ;
+    boolean UserQueueStatus = true;
+
 
 
     @Override
@@ -80,23 +83,22 @@ it is visible to the user that number of people and number of vehicle by categor
 
         }
 
-        LoginActivity.carQ = Integer.parseInt(CarCount);
-        LoginActivity.peopQ = Integer.parseInt(PeopleInQueue);
-        LoginActivity.motoQ = Integer.parseInt(MotoCount);
+        carQ = Integer.parseInt(CarCount);
+        peopQ = Integer.parseInt(PeopleInQueue);
+        motoQ = Integer.parseInt(MotoCount);
 
         petrolShedNameOut.setText(PetrolShedName);
         quantityOut.setText(AvailableQuantity);
 
-        if(LoginActivity.UserQueueStatus){
 
             peopleInQueue.setText(PeopleInQueue);
             carCount.setText(CarCount);
             motoCount.setText(MotoCount);
-        }else{
-            peopleInQueue.setText(String.valueOf(LoginActivity.peopQ));
-            carCount.setText(String.valueOf(LoginActivity.carQ));
-            motoCount.setText(String.valueOf(LoginActivity.motoQ));
-        }
+
+            peopleInQueue.setText(String.valueOf(peopQ));
+            carCount.setText(String.valueOf(carQ));
+            motoCount.setText(String.valueOf(motoQ));
+
 
 
 
@@ -114,23 +116,25 @@ it is visible to the user that number of people and number of vehicle by categor
                 if(vehiT.equals("null")){
                     Toast.makeText(QueueDetailsActivity.this, "please select the correct vehicle type", Toast.LENGTH_SHORT).show();
                 }else{
-                    if(LoginActivity.UserQueueStatus){
+                    if(UserQueueStatus){
                         if(vehiT.equals("car")){
-                            LoginActivity.carQ++;
+                            carQ++;
                         }
                         if(vehiT.equals("motor bike")){
-                            LoginActivity.motoQ++;
+                            motoQ++;
                         }
-                        LoginActivity.peopQ++;
-                        peopleInQueue.setText(String.valueOf(LoginActivity.peopQ));
-                        carCount.setText(String.valueOf(LoginActivity.carQ));
-                        motoCount.setText(String.valueOf(LoginActivity.motoQ));
-                        LoginActivity.UserQueueStatus = false;
+                        peopQ++;
+                        peopleInQueue.setText(String.valueOf(peopQ));
+                        carCount.setText(String.valueOf(carQ));
+                        motoCount.setText(String.valueOf(motoQ));
+                        UserQueueStatus = false;
                         btnSendPostRequestClicked();
+                        Toast.makeText(QueueDetailsActivity.this,"Jointed in the queue", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(QueueDetailsActivity.this, UserFuelfillingStatus.class);
                         intent.putExtra("PetrolShedName",PetrolShedName);
                         startActivity(intent);
                     }else{
+                        Toast.makeText(QueueDetailsActivity.this,"Already Jointed in the queue", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(QueueDetailsActivity.this, UserFuelfillingStatus.class);
                         startActivity(intent);
                     }
