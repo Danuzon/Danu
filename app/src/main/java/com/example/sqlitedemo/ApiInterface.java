@@ -21,7 +21,7 @@ This class used for retrofit interface For All API method
 
     //connecting app to backend using URL
 
-    String JSON_URL_BASE = "http://192.168.8.100:45458";
+    String JSON_URL_BASE = "http://192.168.8.100:45462";
     String JSON_URL_froPetrolStation = JSON_URL_BASE + "/api/petrolshed";
 
     String JSON_URL_froCountUser = JSON_URL_BASE + "/api/user/count/";

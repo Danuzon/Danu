@@ -136,6 +136,7 @@ it is visible to the user that number of people and number of vehicle by categor
                     }else{
                         Toast.makeText(QueueDetailsActivity.this,"Already Jointed in the queue", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(QueueDetailsActivity.this, UserFuelfillingStatus.class);
+                        intent.putExtra("PetrolShedName",PetrolShedName);
                         startActivity(intent);
                     }
 
