@@ -21,11 +21,12 @@ This class used for retrofit interface For All API method
 
     //connecting app to backend using URL
 
-    String JSON_URL_froPetrolStation = "http://192.168.8.100:45456/api/petrolshed";
     String JSON_URL_BASE = "http://192.168.8.100:45456";
-    String JSON_URL_froCountUser = "http://192.168.8.100:45456/api/user/count/";
-    String JSON_URL_forQtyPetrol = "http://192.168.8.100:45456/api/petrolshed/petrolQty/";
-    String JSON_URL_detailsWithChangedValue = "http://192.168.8.100:45456/api/petrolshed/petrolShedDetails/";
+    String JSON_URL_froPetrolStation = JSON_URL_BASE + "/api/petrolshed";
+
+    String JSON_URL_froCountUser = JSON_URL_BASE + "/api/user/count/";
+    String JSON_URL_forQtyPetrol = JSON_URL_BASE + "/api/petrolshed/petrolQty/";
+    String JSON_URL_detailsWithChangedValue = JSON_URL_BASE + "/api/petrolshed/petrolShedDetails/";
 
     @POST("/api/petrolshed")
     Call<PetrolShedAdmin> createTask(@Body PetrolShedAdmin petrolShedAdmin);

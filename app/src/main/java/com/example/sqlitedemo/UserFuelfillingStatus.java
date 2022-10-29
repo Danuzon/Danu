@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import retrofit2.Call;
@@ -24,8 +25,10 @@ public class UserFuelfillingStatus extends AppCompatActivity {
 
     static boolean buttonState = true;
 
+    public String PetrolShedName;
     Button exitBeforePumpFuel, exitAfterPumpFuel;
     EditText petrolQty;
+    TextView petrolShedName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +37,11 @@ public class UserFuelfillingStatus extends AppCompatActivity {
         exitAfterPumpFuel = findViewById(R.id.ExitAfterPumpFuel);
         exitBeforePumpFuel = findViewById(R.id.exitBeforePumpFuel);
         petrolQty = findViewById(R.id.petrolQtyFromUser);
+        petrolShedName = findViewById(R.id.tViewPetrolShedName);
 
+        Intent intent = this.getIntent();
+        PetrolShedName = intent.getStringExtra("PetrolShedName");
+        petrolShedName.setText(PetrolShedName);
 // implement user exit before pump fuel method
 
         exitBeforePumpFuel.setOnClickListener(new View.OnClickListener() {

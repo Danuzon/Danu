@@ -128,6 +128,7 @@ it is visible to the user that number of people and number of vehicle by categor
                         LoginActivity.UserQueueStatus = false;
                         btnSendPostRequestClicked();
                         Intent intent = new Intent(QueueDetailsActivity.this, UserFuelfillingStatus.class);
+                        intent.putExtra("PetrolShedName",PetrolShedName);
                         startActivity(intent);
                     }else{
                         Intent intent = new Intent(QueueDetailsActivity.this, UserFuelfillingStatus.class);
