@@ -18,7 +18,7 @@ public class LoginActivity extends AppCompatActivity {
     */
 
     EditText username,password;
-    Button signin, regiter, jButton;
+    Button signin, regiter;
     DBHelper DB;
 
     static String userNameFromLogin;
@@ -38,14 +38,12 @@ public class LoginActivity extends AppCompatActivity {
         password=findViewById(R.id.password1);
         signin=findViewById(R.id.signin1);
         regiter=findViewById(R.id.registerBtn);
-        jButton=findViewById(R.id.jButton);
         DB=new DBHelper(this);
 
 
         regiter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                jButton.setVisibility(view.VISIBLE);
                 Intent intent=new Intent(getApplicationContext(),SignUpActivity.class);
                 startActivity(intent);
             }
